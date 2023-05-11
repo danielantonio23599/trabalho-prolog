@@ -1,169 +1,170 @@
-:- dynamic doenca/2.
-% Definindo as doenÁas e seus sintomas conhecidos
+% Autor:
+% Data: 11/05/2023
+% Definindo as doen√ßas e seus sintomas conhecidos
 
-% DoenÁa 1: Gripe
+% Doen√ßa 1: Gripe
 doenca(gripe, [febre, dor_de_cabeca, dor_no_corpo, tosse_seca, cansaco]).
 
-% DoenÁa 2: Resfriado comum
+% Doen√ßa 2: Resfriado comum
 doenca(resfriado, [coriza, tosse, dor_de_garganta, espirros, dor_de_cabeca]).
 
-% DoenÁa 3: Pneumonia
+% Doen√ßa 3: Pneumonia
 doenca(pneumonia, [febre, tosse, dor_no_peito, falta_de_ar, cansaco, suores_noturnos]).
 
-% DoenÁa 4: Tuberculose
+% Doen√ßa 4: Tuberculose
 doenca(tuberculose, [tosse, cansaco, perda_de_peso, febre, suores_noturnos]).
 
-% DoenÁa 5: Asma
+% Doen√ßa 5: Asma
 doenca(asma, [falta_de_ar, chiado_no_peito, tosse, dificuldade_para_respirar]).
 
-% DoenÁa 6: Bronquite
+% Doen√ßa 6: Bronquite
 doenca(bronquite, [tosse, muco, chiado_no_peito, falta_de_ar]).
 
-% DoenÁa 7: Sinusite
+% Doen√ßa 7: Sinusite
 doenca(sinuiste, [dor_de_cabeca, dor_de_garganta, coriza, congestao_nasal]).
 
-% DoenÁa 8: Conjuntivite
+% Doen√ßa 8: Conjuntivite
 doenca(conjuntivite, [olhos_vermelhos, coceira_nos_olhos, lacrimejamento, secrecao_nos_olhos]).
 
-% DoenÁa 9: Otite
+% Doen√ßa 9: Otite
 doenca(otite, [dor_de_ouvido, perda_auditiva, febre, tontura]).
 
-% DoenÁa 10: Amigdalite
+% Doen√ßa 10: Amigdalite
 doenca(amigdalite, [dor_de_garganta, dificuldade_para_engolir, febre, inchaco_das_amigdalas]).
 
-% DoenÁa 11: Apendicite
+% Doen√ßa 11: Apendicite
 doenca(apendicite, [dor_na_barriga, febre, vomito, diarreia]).
 
-% DoenÁa 12: Gastrite
+% Doen√ßa 12: Gastrite
 doenca(gastrite, [dor_na_barriga, azia, queimacao, perda_de_apetite]).
 
-% DoenÁa 13: ⁄lcera
+% Doen√ßa 13: √ölcera
 doenca(ulcera, [dor_na_barriga, azia, queimacao, perda_de_apetite, perda_de_peso]).
 
-% DoenÁa 14: DoenÁa do refluxo gastroesof·gico (DRGE)
+% Doen√ßa 14: Doen√ßa do refluxo gastroesof√°gico (DRGE)
 doenca(drge, [azia, dor_no_peito, dificuldade_para_engolir, tosse, rouquidao]).
 
-% DoenÁa 15: Hepatite
-doenca(hepatite, [dor_de_barriga, 'amarel„o', fadiga, perda_de_apetite]).
+% Doen√ßa 15: Hepatite
+doenca(hepatite, [dor_de_barriga, 'amarel√£o', fadiga, perda_de_apetite]).
 
-% DoenÁa 16: Diabetes tipo 1
+% Doen√ßa 16: Diabetes tipo 1
 doenca(diabetes_tipo1, [aumento_da_sede, aumento_da_fome, perda_de_peso, fadiga, visao_embacada]).
 
-% DoenÁa 17: Diabetes tipo 2
+% Doen√ßa 17: Diabetes tipo 2
 doenca(diabetes_tipo2, [aumento_da_sede, aumento_da_fome, perda_de_peso, fadiga, visao_embacada]).
 
-% DoenÁa 18: Hipertens„o arterial
+% Doen√ßa 18: Hipertens√£o arterial
 doenca(hipertensao, [dor_de_cabeca, visao_embacada, tonturas, dor_no_peito, falta_de_ar]).
 
-% DoenÁa 19: Infarto do mioc·rdio
+% Doen√ßa 19: Infarto do mioc√°rdio
 doenca(infarto, [dor_no_peito, dor_no_braco_esquerdo, falta_de_ar, sudorese, nauseas]).
 
-% DoenÁa 20: AVC (Acidente vascular cerebral)
-doenca(avc, [dor_de_cabeca, fraqueza_no_braÁo_ou_perna, dificuldade_de_fala, perda_de_visao, tontura]).
+% Doen√ßa 20: AVC (Acidente vascular cerebral)
+doenca(avc, [dor_de_cabeca, fraqueza_no_bra√ßo_ou_perna, dificuldade_de_fala, perda_de_visao, tontura]).
 
-% DoenÁa 21: Mal de Alzheimer
-doenca(alzheimer, [perda_de_memoria, dificuldade_de_pensar, mudanÁas_de_humor, dificuldade_para_comunicar]).
+% Doen√ßa 21: Mal de Alzheimer
+doenca(alzheimer, [perda_de_memoria, dificuldade_de_pensar, mudan√ßas_de_humor, dificuldade_para_comunicar]).
 
-% DoenÁa 22: Parkinson
+% Doen√ßa 22: Parkinson
 doenca(parkinson, [tremores, rigidez_muscular, lentidao_de_movimentos, problemas_de_equilibrio]).
 
-% DoenÁa 23: Esclerose m˙ltipla
+% Doen√ßa 23: Esclerose m√∫ltipla
 doenca(esclerose_multipla, [fadiga, perda_de_visao, problemas_de_equilibrio, formigamento_nos_membros, fraqueza_muscular]).
 
-% DoenÁa 24: Artrite reumatoide
+% Doen√ßa 24: Artrite reumatoide
 doenca(artrite_reumatoide, [dor_nas_articulacoes, inchaco_nas_articulacoes, rigidez_matinal, fadiga]).
 
-% DoenÁa 25: Fibromialgia
+% Doen√ßa 25: Fibromialgia
 doenca(fibromialgia, [dor_no_corpo, fadiga, problemas_de_sono, dores_de_cabeca, ansiedade]).
 
-% DoenÁa 26: Depress„o
+% Doen√ßa 26: Depress√£o
 doenca(depressao, [tristeza, perda_de_interesse, alteracoes_de_sono, falta_de_energia, baixa_autoestima]).
 
-% DoenÁa 27: Transtorno bipolar
+% Doen√ßa 27: Transtorno bipolar
 doenca(transtorno_bipolar, [alteracoes_de_humor, falta_de_energia, dificuldade_de_concentracao, impulsividade, comportamento_irracional]).
 
-% DoenÁa 28: Esquizofrenia
+% Doen√ßa 28: Esquizofrenia
 doenca(esquizofrenia, [alucinacoes, delirios, desorganizacao_do_pensamento, apatia, isolamento_social]).
 
-% DoenÁa 29: Transtorno de ansiedade generalizada
+% Doen√ßa 29: Transtorno de ansiedade generalizada
 doenca(tag, [ansiedade_excessiva, preocupacaose_excessivas, irritabilidade, fadiga, tensao_muscular]).
 
-% DoenÁa 30: Transtorno obsessivo-compulsivo (TOC)
+% Doen√ßa 30: Transtorno obsessivo-compulsivo (TOC)
 doenca(toc, [obsessoes, compulsoes, ansiedade, sentimentos_de_culpa, dificuldade_para_tomar_decisoes]).
 
-% DoenÁa 31: Transtorno do p‚nico
+% Doen√ßa 31: Transtorno do p√¢nico
 
 doenca(panico, [ataques_de_panico, palpitacoes, sudorese, falta_de_ar, medo_de_morrer]).
 
-% DoenÁa 32: Transtorno de estresse pÛs-traum·tico (TEPT)
+% Doen√ßa 32: Transtorno de estresse p√≥s-traum√°tico (TEPT)
 doenca(tept, [flashbacks, pesadelos, evitacao_de_estimulos_associados_ao_trauma, irritabilidade, ansiedade]).
 
-% DoenÁa 33: Anorexia nervosa
+% Doen√ßa 33: Anorexia nervosa
 doenca(anorexia, [perda_de_peso, recusa_em_comer, medo_de_engordar, distorcao_da_imagem_corporal, perda_da_menstruacao]).
 
-% DoenÁa 34: Bulimia nervosa
-doenca(bulimia, [episodios_de_comer_em_excesso, sensacao_de_falta_de_controle, vÙmitos_induzidos, uso_de_laxantes, preocupacao_com_o_peso_corporal]).
+% Doen√ßa 34: Bulimia nervosa
+doenca(bulimia, [episodios_de_comer_em_excesso, sensacao_de_falta_de_controle, v√¥mitos_induzidos, uso_de_laxantes, preocupacao_com_o_peso_corporal]).
 
-% DoenÁa 35: Transtornos de personalidade
+% Doen√ßa 35: Transtornos de personalidade
 doenca(transtornos_de_personalidade, [padroes_comportamentais_infelizes, dificuldades_de_relacionamento, impulsividade, instabilidade_emocional, baixa_autoestima]).
 
-% DoenÁa 36: SÌndrome do p‚nico com agorafobia
+% Doen√ßa 36: S√≠ndrome do p√¢nico com agorafobia
 doenca(panico_com_agorafobia, [ataques_de_panico, medo_de_situacoes_que_causam_vulnerabilidade, ansiedade, sudorese, palpitacoes]).
 
-% DoenÁa 37: Transtorno esquizoafetivo
+% Doen√ßa 37: Transtorno esquizoafetivo
 doenca(esquizoafetivo, [sintomas_da_esquizofrenia, sintomas_do_transtorno_afetivo, alucinacoes, delirios, alteracoes_de_humor]).
 
-% DoenÁa 38: Transtornos alimentares n„o especificados
+% Doen√ßa 38: Transtornos alimentares n√£o especificados
 doenca(transtornos_alimentares_nao_especificados, [sintomas_de_anorexia_e_bulimia, comportamentos_alimentares_atipicos, obsessao_com_o_peso_corporal]).
 
-% DoenÁa 39: Transtorno da compuls„o alimentar periÛdica
+% Doen√ßa 39: Transtorno da compuls√£o alimentar peri√≥dica
 doenca(compulsao_alimentar_periodica, [episodios_de_comer_em_excesso, sensacao_de_falta_de_controle, vergonha_e_culpa_apos_os_episodios]).
 
-% DoenÁa 40: Transtorno da personalidade borderline
+% Doen√ßa 40: Transtorno da personalidade borderline
 doenca(borderline, [instabilidade_emocional, medo_do_abandono, impulsividade, sentimentos_de_vazio, comportamentos_autodestrutivos]).
 
-% DoenÁa 41: Transtorno da ansiedade social (fobia social)
+% Doen√ßa 41: Transtorno da ansiedade social (fobia social)
 doenca(ansiedade_social, [medo_de_situacoes_sociais, medo_de_ser_julgado, evitacao_de_situacoes_sociais, sudorese, palpitacoes]).
 
-% DoenÁa 42: Transtorno dismÛrfico corporal
+% Doen√ßa 42: Transtorno dism√≥rfico corporal
 doenca(dismorfia_corporal, [preocupacao_excessiva_com_defeitos_percebidos_no_corpo, comportamentos_repetitivos_para_lidar_com_a_preocupacao, isolamento_social, ansiedade, depressao]).
 
-% DoenÁa 43: Transtorno de dÈficit de atenÁ„o e hiperatividade (TDAH)
+% Doen√ßa 43: Transtorno de d√©ficit de aten√ß√£o e hiperatividade (TDAH)
 doenca(tdah, [dificuldadede_concentracao, impulsividade, hiperatividade, desorganizacao, dificuldade_em_completar_tarefas]).
 
-% DoenÁa 44: Transtorno obsessivo-compulsivo (TOC)
+% Doen√ßa 44: Transtorno obsessivo-compulsivo (TOC)
 doenca(ocd, [obsessoes, compulsoes, ansiedade, medo_de_perder_o_controle, comportamentos_repetitivos]).
 
-% DoenÁa 45: Transtorno da personalidade narcisista
+% Doen√ßa 45: Transtorno da personalidade narcisista
 doenca(narcisista, [sentimento_de_grandiosidade, necessidade_de_admiracao, falta_de_empatia, comportamentos_arrogantes, preocupacao_com_o_status_social]).
 
-% DoenÁa 46: Transtorno da personalidade esquizotÌpica
+% Doen√ßa 46: Transtorno da personalidade esquizot√≠pica
 doenca(esquizotipica, [comportamentos_excentricos, isolamento_social, crencas_e_supersticoes_bizarras, dificuldades_de_relacionamento, pensamento_e_discurso_confuso]).
 
-% DoenÁa 47: Transtorno da personalidade esquiva
+% Doen√ßa 47: Transtorno da personalidade esquiva
 doenca(esquiva, [evitacao_de_situacoes_sociais, medo_de_ser_julgado, baixa_autoestima, sentimentos_de_inferioridade, isolamento_social]).
 
-% DoenÁa 48: Transtorno da personalidade dependente
+% Doen√ßa 48: Transtorno da personalidade dependente
 doenca(dependente, [medo_de_abandono, dificuldade_em_tomar_decisoes, necessidade_de_ser_cuidado, submissao_a_outros, dificuldade_em_separar-se_de_relacionamentos]).
 
-% DoenÁa 49: Transtorno da personalidade obsessivo-compulsivo (TPOC)
+% Doen√ßa 49: Transtorno da personalidade obsessivo-compulsivo (TPOC)
 doenca(tpoc, [perfeccionismo, rigidez, preocupacao_com_os_detalhes, inflexibilidade, ansiedade]).
 
-% DoenÁa 50: Transtorno de ajustamento
+% Doen√ßa 50: Transtorno de ajustamento
 doenca(ajustamento, [dificuldades_em_lidar_com_eventos_estressantes, sentimentos_de_ansiedade, tristeza, mudancas_de_humor, isolamento_social]).
 
-   inserir_final([], Y, [Y]).         % Se a lista estava vazia, o resultado È [Y]
-inserir_final([I|R], Y, [I|R1]) :- % Sen„o, o primeiro elemento È igual, e o resto È obtido
+   inserir_final([], Y, [Y]).         % Se a lista estava vazia, o resultado √© [Y]
+inserir_final([I|R], Y, [I|R1]) :- % Sen√£o, o primeiro elemento √© igual, e o resto √© obtido
     inserir_final(R, Y, R1).
-    
+
 % Verifica a quantidade de elementos de Lista1 presentes em Lista2
-quantidade_elementos_presentes([], _, 0). % Caso base: Lista1 vazia, quantidade È 0
+quantidade_elementos_presentes([], _, 0). % Caso base: Lista1 vazia, quantidade √© 0
 quantidade_elementos_presentes([Elemento|Resto], Lista2, Quantidade) :-
-    member(Elemento, Lista2), % Verifica se Elemento È membro de Lista2
+    member(Elemento, Lista2), % Verifica se Elemento √© membro de Lista2
     delete(Elemento, Lista2, Lista),
     quantidade_elementos_presentes(Resto, Lista, SubQuantidade),
     Quantidade is SubQuantidade + 1;
-    quantidade_elementos_presentes(Resto, Lista2, Quantidade). % N„o incrementa o contador
+    quantidade_elementos_presentes(Resto, Lista2, Quantidade). % N√£o incrementa o contador
 
 
 possiveis_doencas(PDoenca, Sintomas, Indice):-
@@ -172,7 +173,7 @@ possiveis_doencas(PDoenca, Sintomas, Indice):-
      Quantidade =:= 5, inserir_final([], [Doenca, Quantidade], PDoenca), !;
      Quantidade > Indice, inserir_final(PDoenca, [Doenca, Quantidade], PDoenca2),
      possiveis_doencas(PDoenca2, Sintomas, Indice).
-     
+
 lista_vazia([]).
 
 doencaos_correspondente(Doencas, Sintomas, Indice):-
@@ -181,9 +182,9 @@ doencaos_correspondente(Doencas, Sintomas, Indice):-
     NIndice is Indice - 1,
     Indice >= 2,
     doencaos_correspondente(Doenca, Sintomas, Indice);
-    write('Nenhuma doenÁa encontrada, verifique corretamente os sintomas de seu passiente!'), nl, fail.
+    write('Nenhuma doen√ßa encontrada, verifique corretamente os sintomas de seu passiente!'), nl, fail.
 
-% Definindo a regra para verificar se um paciente tem uma doenÁa com base em seus sintomas
+% Definindo a regra para verificar se um paciente tem uma doen√ßa com base em seus sintomas
 tem_doenca(Paciente, Doenca) :-
     doenca(Doenca, Sintomas),
     tem_sintomas(Paciente, Sintomas).
@@ -199,14 +200,34 @@ tem_sintoma(Paciente, Sintoma) :-
     write('O paciente '), write(Paciente), write(' tem '), write(Sintoma), write('? '),
     read(Resposta),
     Resposta == sim.
-    
-diagnostico():-
-    write('Digite o primeiro sintoma: '), read(Sintoma1), nl, inserir_final([], Sintoma1, Sintomas), write(Sintomas),
-    write('Digite o segundo sintoma: '), read(Sintoma2), nl, inserir_final(Sintomas, Sintoma2, Sintomas2), write(Sintomas2),
-    write('Digite o segundo sintoma: '), read(Sintoma3), nl, inserir_final(Sintomas2, Sintoma3, Sintomas3), write(Sintomas3),
-    write('Digite o segundo sintoma: '), read(Sintoma4), nl, inserir_final(Sintomas3, Sintoma4, Sintomas4),write(Sintomas4),
-    write('Digite o segundo sintoma: '), read(Sintoma5), nl, inserir_final(Sintomas4, Sintoma5, Sintomas5),write(Sintomas5),
-    doencaos_correspondente([Doenca|Resto], Sintomas5, 4),
-    write('As possÌveis doenÁas s„o:'), write(Doenca), write(' com '), write(N), write(' sintomas').
-    
 
+doencas(Doenca) :-
+  doenca(Doenca, Sintomas),
+  write(Doenca), nl,
+  fail.
+  
+opcoes(Opcao):-
+    Opcao =:= 1, diagnostico(Doenca);
+    Opcao =:= 2, sintomasCadastrados(Sintomas);
+    Opcao =:= 3, doencas(Doencas), write(Doencas), nl;
+    Opcao =:= 4, !; menuOpcoes(_).
+
+menuOpcoes(Doencas) :-
+    write('1 - Realizar diagnostico: '), nl,
+    write('2 - Lista de Sintomas na base: '), nl,
+    write('3 - Listar doen√ßas: '), nl,
+    write('4 - Sair: '), nl,
+    write('Digite a op√ß√£o: '), read(Opcao), nl,
+    opcoes(Opcao).
+
+
+
+
+diagnostico(Doenca) :-
+    write('Digite o primeiro sintoma: '), read(Sintoma1), nl, inserir_final([], Sintoma1, Sintomas),
+    write('Digite o segundo sintoma: '), read(Sintoma2), nl, inserir_final(Sintomas, Sintoma2, Sintomas2),
+    write('Digite o segundo sintoma: '), read(Sintoma3), nl, inserir_final(Sintomas2, Sintoma3, Sintomas3),
+    write('Digite o segundo sintoma: '), read(Sintoma4), nl, inserir_final(Sintomas3, Sintoma4, Sintomas4),
+    write('Digite o segundo sintoma: '), read(Sintoma5), nl, inserir_final(Sintomas4, Sintoma5, Sintomas5),
+    doencaos_correspondente([Doenca|Resto], Sintomas5, 4),
+    write('As poss√≠veis doen√ßas s√£o:'),nl, write(Doenca), write(' com '), write(' sintomas').
