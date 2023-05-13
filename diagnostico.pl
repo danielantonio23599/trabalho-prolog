@@ -1,7 +1,3 @@
-% Autor:
-% Data: 11/05/2023
-% Definindo as doenças e seus sintomas conhecidos
-
 % Doença 1: Gripe
 doenca(gripe, [febre, dor_de_cabeca, dor_no_corpo, tosse_seca, cansaco]).
 
@@ -45,7 +41,7 @@ doenca(ulcera, [dor_na_barriga, azia, queimacao, perda_de_apetite, perda_de_peso
 doenca(drge, [azia, dor_no_peito, dificuldade_para_engolir, tosse, rouquidao]).
 
 % Doença 15: Hepatite
-doenca(hepatite, [dor_de_barriga, 'amarelão', fadiga, perda_de_apetite]).
+doenca(hepatite, [dor_de_barriga, amarelao, fadiga, perda_de_apetite]).
 
 % Doença 16: Diabetes tipo 1
 doenca(diabetes_tipo1, [aumento_da_sede, aumento_da_fome, perda_de_peso, fadiga, visao_embacada]).
@@ -60,7 +56,7 @@ doenca(hipertensao, [dor_de_cabeca, visao_embacada, tonturas, dor_no_peito, falt
 doenca(infarto, [dor_no_peito, dor_no_braco_esquerdo, falta_de_ar, sudorese, nauseas]).
 
 % Doença 20: AVC (Acidente vascular cerebral)
-doenca(avc, [dor_de_cabeca, fraqueza_no_braço_ou_perna, dificuldade_de_fala, perda_de_visao, tontura]).
+doenca(avc, [dor_de_cabeca, fraqueza_no_braco_ou_perna, dificuldade_de_fala, perda_de_visao, tontura]).
 
 % Doença 21: Mal de Alzheimer
 doenca(alzheimer, [perda_de_memoria, dificuldade_de_pensar, mudanças_de_humor, dificuldade_para_comunicar]).
@@ -93,7 +89,6 @@ doenca(tag, [ansiedade_excessiva, preocupacaose_excessivas, irritabilidade, fadi
 doenca(toc, [obsessoes, compulsoes, ansiedade, sentimentos_de_culpa, dificuldade_para_tomar_decisoes]).
 
 % Doença 31: Transtorno do pânico
-
 doenca(panico, [ataques_de_panico, palpitacoes, sudorese, falta_de_ar, medo_de_morrer]).
 
 % Doença 32: Transtorno de estresse pós-traumático (TEPT)
@@ -145,7 +140,7 @@ doenca(esquizotipica, [comportamentos_excentricos, isolamento_social, crencas_e_
 doenca(esquiva, [evitacao_de_situacoes_sociais, medo_de_ser_julgado, baixa_autoestima, sentimentos_de_inferioridade, isolamento_social]).
 
 % Doença 48: Transtorno da personalidade dependente
-doenca(dependente, [medo_de_abandono, dificuldade_em_tomar_decisoes, necessidade_de_ser_cuidado, submissao_a_outros, dificuldade_em_separar-se_de_relacionamentos]).
+doenca(dependente, [medo_de_abandono, dificuldade_em_tomar_decisoes, necessidade_de_ser_cuidado, submissao_a_outros, dificuldade_em_separar_se_de_relacionamentos]).
 
 % Doença 49: Transtorno da personalidade obsessivo-compulsivo (TPOC)
 doenca(tpoc, [perfeccionismo, rigidez, preocupacao_com_os_detalhes, inflexibilidade, ansiedade]).
@@ -157,22 +152,17 @@ doenca(ajustamento, [dificuldades_em_lidar_com_eventos_estressantes, sentimentos
 inserir_final([I|R], Y, [I|R1]) :- % Senão, o primeiro elemento é igual, e o resto é obtido
     inserir_final(R, Y, R1).
 
-% Verifica a quantidade de elementos de Lista1 presentes em Lista2
-quantidade_elementos_presentes([], _, 0). % Caso base: Lista1 vazia, quantidade é 0
-quantidade_elementos_presentes([Elemento|Resto], Lista2, Quantidade) :-
-    member(Elemento, Lista2), % Verifica se Elemento é membro de Lista2
-    delete(Elemento, Lista2, Lista),
-    quantidade_elementos_presentes(Resto, Lista, SubQuantidade),
-    Quantidade is SubQuantidade + 1;
-    quantidade_elementos_presentes(Resto, Lista2, Quantidade). % Não incrementa o contador
+quantidade_elementos_comuns(Lista1, Lista2, Quantidade) :-
+  intersection(Lista1, Lista2, ElementosComuns),
+  length(ElementosComuns, Quantidade).
 
+validaQuantidade(N, I, Doenca, PDoenca):-
+    N >= I, append([], [Doenca, N], PDoenca).
 
 possiveis_doencas(PDoenca, Sintomas, Indice):-
     doenca(Doenca, SintomasD),
-    quantidade_elementos_presentes(Sintomas, SintomasD, Quantidade),
-     Quantidade =:= 5, inserir_final([], [Doenca, Quantidade], PDoenca), !;
-     Quantidade > Indice, inserir_final(PDoenca, [Doenca, Quantidade], PDoenca2),
-     possiveis_doencas(PDoenca2, Sintomas, Indice).
+    quantidade_elementos_comuns(Sintomas, SintomasD, Quantidade),
+    validaQuantidade(Quantidade, Indice, Doenca, PDoenca).
 
 lista_vazia([]).
 
@@ -180,8 +170,8 @@ doencaos_correspondente(Doencas, Sintomas, Indice):-
     possiveis_doencas(Doencas, Sintomas, Indice),
     not(lista_vazia(Doencas));
     NIndice is Indice - 1,
-    Indice >= 2,
-    doencaos_correspondente(Doenca, Sintomas, Indice);
+    NIndice >= 2,
+    doencaos_correspondente(Doencas, Sintomas, NIndice);
     write('Nenhuma doença encontrada, verifique corretamente os sintomas de seu passiente!'), nl, fail.
 
 % Definindo a regra para verificar se um paciente tem uma doença com base em seus sintomas
@@ -202,32 +192,49 @@ tem_sintoma(Paciente, Sintoma) :-
     Resposta == sim.
 
 doencas(Doenca) :-
-  doenca(Doenca, Sintomas),
+  doenca(Doenca,_),
   write(Doenca), nl,
   fail.
-  
+remover_repetidos([], []).
+remover_repetidos([X|Resto], SemRepeticao) :-
+    member(X, Resto), !,
+    remover_repetidos(Resto, SemRepeticao).
+    remover_repetidos([X|Resto], [X|SemRepeticao]) :-
+    remover_repetidos(Resto, SemRepeticao).
+
+sintomasCadastrados(Sintomas):-
+  findall(Lista, doenca(_, Lista), Matriz),
+  flatten(Matriz, Sintomas).
+
+imprimeLista([]).
+imprimeLista([X|Resto]):-
+  write(X), nl,
+  imprimeLista(Resto),!.
+
+sintomas(Sintomas):-
+  sintomasCadastrados(Sintomas),
+  remover_repetidos(Sintomas, Lista),
+  imprimeLista(Lista).
+
 opcoes(Opcao):-
-    Opcao =:= 1, diagnostico(Doenca);
-    Opcao =:= 2, sintomasCadastrados(Sintomas);
-    Opcao =:= 3, doencas(Doencas), write(Doencas), nl;
+    Opcao =:= 1, diagnostico(_);
+    Opcao =:= 2, sintomas(_);
+    Opcao =:= 3, doencas(_);
     Opcao =:= 4, !; menuOpcoes(_).
 
-menuOpcoes(Doencas) :-
+menuOpcoes(_) :-
     write('1 - Realizar diagnostico: '), nl,
-    write('2 - Lista de Sintomas na base: '), nl,
+    write('2 - Lista de Sintomas da base: '), nl,
     write('3 - Listar doenças: '), nl,
     write('4 - Sair: '), nl,
     write('Digite a opção: '), read(Opcao), nl,
     opcoes(Opcao).
 
-
-
-
-diagnostico(Doenca) :-
-    write('Digite o primeiro sintoma: '), read(Sintoma1), nl, inserir_final([], Sintoma1, Sintomas),
-    write('Digite o segundo sintoma: '), read(Sintoma2), nl, inserir_final(Sintomas, Sintoma2, Sintomas2),
-    write('Digite o segundo sintoma: '), read(Sintoma3), nl, inserir_final(Sintomas2, Sintoma3, Sintomas3),
-    write('Digite o segundo sintoma: '), read(Sintoma4), nl, inserir_final(Sintomas3, Sintoma4, Sintomas4),
-    write('Digite o segundo sintoma: '), read(Sintoma5), nl, inserir_final(Sintomas4, Sintoma5, Sintomas5),
-    doencaos_correspondente([Doenca|Resto], Sintomas5, 4),
-    write('As possíveis doenças são:'),nl, write(Doenca), write(' com '), write(' sintomas').
+diagnostico(_) :-
+    write('Digite o primeiro sintoma: 1/5'), read(Sintoma1), nl, inserir_final([], Sintoma1, Sintomas),
+    write('Digite o segundo sintoma: 2/5'), read(Sintoma2), nl, inserir_final(Sintomas, Sintoma2, Sintomas2),
+    write('Digite o terceiro sintoma: 3/5'), read(Sintoma3), nl, inserir_final(Sintomas2, Sintoma3, Sintomas3),
+    write('Digite o segundo sintoma: 4/5'), read(Sintoma4), nl, inserir_final(Sintomas3, Sintoma4, Sintomas4),
+    write('Digite o segundo sintoma: 5/5'), read(Sintoma5), nl, inserir_final(Sintomas4, Sintoma5, Sintomas5),
+    doencaos_correspondente([Doenca,N|_], Sintomas5, 4),
+    write('As possíveis doenças são:'),nl, write(Doenca), write(' com '),write(N), write(' sintomas').
