@@ -31,7 +31,7 @@ nova_posicao_cavalo(X, Y, Matriz, X1, Y1) :-
 
 primeiro_segundo([H1, H2|_], H1, H2).
 
-nova_posicao(X, Y, [[]|Resto], Matriz, X1, Y1).
+nova_posicao(_, _, [[]|_], _, _, _).
 nova_posicao(X, Y, [[DX, DY|_]|Resto], Matriz, X1, Y1) :-
     (X1 is X + DX,
     Y1 is Y + DY,
@@ -48,18 +48,18 @@ dentro_da_matriz(X, Y, Matriz) :-
     L is NumLinhas-1,
     between(0, L, Y).
 
-dfs_pruning(N, X, Y, Table, TableOut, Count) :-
+pular(N, X, Y, Table, TableOut, Count) :-
     Size is N*N,
     Size =:= Count,
     set_cell(X, Y, Count, Table, NewTable),
     TableOut = NewTable.
 
-dfs_pruning(N, X, Y, Table, TableOut, Count) :-
+pular(N, X, Y, Table, TableOut, Count) :-
     % Adiciona a posição visitada a matriz com o valor count
     set_cell(X, Y, Count, Table, NewTable),
     nova_posicao_cavalo(X, Y, NewTable, X1, Y1),
     Count1 is Count + 1,
-    dfs_pruning(N, X1, Y1, NewTable, TableOut, Count1).
+    pular(N, X1, Y1, NewTable, TableOut, Count1).
 
 imprimeTab(Tab) :-
    imprimeLinha(Tab).
@@ -79,7 +79,7 @@ saltosCavalo(N, X, Y) :-
    create_table(N, Table),
    Y1 is Y - 1,
    X1 is X - 1,
-   dfs_pruning(N, X1, Y1, Table, TableOut, 1),
+   pular(N, X1, Y1, Table, TableOut, 1),
    % Imprime a sequência de casas visitadas
    write('Matriz de casas visitadas: '), nl,
    imprimeTab(TableOut), nl,
