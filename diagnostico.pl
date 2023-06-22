@@ -148,6 +148,30 @@ doenca(tpoc, [perfeccionismo, rigidez, preocupacao_com_os_detalhes, inflexibilid
 % Doença 50: Transtorno de ajustamento
 doenca(ajustamento, [dificuldades_em_lidar_com_eventos_estressantes, sentimentos_de_ansiedade, tristeza, mudancas_de_humor, isolamento_social]).
 
+% Doença: Gripe
+doenca(gripe, Sintomas) :-
+    correlacionados(Sintomas, [febre, dor_de_cabeca, dores_no_corpo, tosse]).
+
+% Doença: Sinusite
+doenca(sinusite, Sintomas) :-
+    correlacionados(Sintomas, [dor_de_cabeca, congestao_nasal, dor_facial]).
+
+% Doença: Asma
+doenca(asma, Sintomas) :-
+    correlacionados(Sintomas, [falta_de_ar, sibilos, tosse]).
+
+% Doença: Bronquite
+doenca(bronquite, Sintomas) :-
+    correlacionados(Sintomas, [tosse_produtiva, falta_de_ar, dor_no_peito]).
+
+% Doença: Pneumonia
+doenca(pneumonia, Sintomas) :-
+    correlacionados(Sintomas, [febre_alta, falta_de_ar, tosse_produtiva]).
+
+% Função para verificar se os sintomas estão correlacionados
+correlacionados(Sintomas, Correlacionados) :-
+    subset(Correlacionados, Sintomas).
+
    inserir_final([], Y, [Y]).         % Se a lista estava vazia, o resultado é [Y]
 inserir_final([I|R], Y, [I|R1]) :- % Senão, o primeiro elemento é igual, e o resto é obtido
     inserir_final(R, Y, R1).
@@ -217,12 +241,12 @@ sintomas(Sintomas):-
   imprimeLista(Lista).
 
 opcoes(Opcao):-
-    Opcao =:= 1, diagnostico(_);
+    Opcao =:= 1, diagnostico;
     Opcao =:= 2, sintomas(_);
     Opcao =:= 3, doencas(_);
     Opcao =:= 4, !; menuOpcoes(_).
 
-menuOpcoes(_) :-
+menuOpcoes :-
     write('1 - Realizar diagnostico: '), nl,
     write('2 - Lista de Sintomas da base: '), nl,
     write('3 - Listar doenças: '), nl,
@@ -230,11 +254,16 @@ menuOpcoes(_) :-
     write('Digite a opção: '), read(Opcao), nl,
     opcoes(Opcao).
 
-diagnostico(_) :-
-    write('Digite o primeiro sintoma: 1/5'), read(Sintoma1), nl, inserir_final([], Sintoma1, Sintomas),
-    write('Digite o segundo sintoma: 2/5'), read(Sintoma2), nl, inserir_final(Sintomas, Sintoma2, Sintomas2),
-    write('Digite o terceiro sintoma: 3/5'), read(Sintoma3), nl, inserir_final(Sintomas2, Sintoma3, Sintomas3),
-    write('Digite o segundo sintoma: 4/5'), read(Sintoma4), nl, inserir_final(Sintomas3, Sintoma4, Sintomas4),
-    write('Digite o segundo sintoma: 5/5'), read(Sintoma5), nl, inserir_final(Sintomas4, Sintoma5, Sintomas5),
-    doencaos_correspondente([Doenca,N|_], Sintomas5, 4),
-    write('As possíveis doenças são:'),nl, write(Doenca), write(' com '),write(N), write(' sintomas').
+diagnostico :-
+    write('Digite a quantidade de sintomas (máximo 5): '), read(Quantidade), nl,
+    obter_sintomas(Quantidade, [], Sintomas),
+    doencaos_correspondente([Doenca, N|_], Sintomas, 4),
+    write('As possíveis doenças são:'), nl,
+    write(Doenca), write(' com '), write(N), write(' sintomas').
+
+obter_sintomas(0, Sintomas, Sintomas) :- !.
+obter_sintomas(Quantidade, SintomasParciais, Sintomas) :-
+    write('Digite o próximo sintoma: '), read(Sintoma), nl,
+    inserir_final(SintomasParciais, Sintoma, NovosSintomas),
+    NovaQuantidade is Quantidade - 1,
+    obter_sintomas(NovaQuantidade, NovosSintomas, Sintomas).
