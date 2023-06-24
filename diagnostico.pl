@@ -148,30 +148,6 @@ doenca(tpoc, [perfeccionismo, rigidez, preocupacao_com_os_detalhes, inflexibilid
 % Doença 50: Transtorno de ajustamento
 doenca(ajustamento, [dificuldades_em_lidar_com_eventos_estressantes, sentimentos_de_ansiedade, tristeza, mudancas_de_humor, isolamento_social]).
 
-% Doença: Gripe
-doenca(gripe, Sintomas) :-
-    correlacionados(Sintomas, [febre, dor_de_cabeca, dores_no_corpo, tosse]).
-
-% Doença: Sinusite
-doenca(sinusite, Sintomas) :-
-    correlacionados(Sintomas, [dor_de_cabeca, congestao_nasal, dor_facial]).
-
-% Doença: Asma
-doenca(asma, Sintomas) :-
-    correlacionados(Sintomas, [falta_de_ar, sibilos, tosse]).
-
-% Doença: Bronquite
-doenca(bronquite, Sintomas) :-
-    correlacionados(Sintomas, [tosse_produtiva, falta_de_ar, dor_no_peito]).
-
-% Doença: Pneumonia
-doenca(pneumonia, Sintomas) :-
-    correlacionados(Sintomas, [febre_alta, falta_de_ar, tosse_produtiva]).
-
-% Função para verificar se os sintomas estão correlacionados
-correlacionados(Sintomas, Correlacionados) :-
-    subset(Correlacionados, Sintomas).
-
    inserir_final([], Y, [Y]).         % Se a lista estava vazia, o resultado é [Y]
 inserir_final([I|R], Y, [I|R1]) :- % Senão, o primeiro elemento é igual, e o resto é obtido
     inserir_final(R, Y, R1).
@@ -255,7 +231,7 @@ menuOpcoes :-
     opcoes(Opcao).
 
 diagnostico :-
-    write('Digite a quantidade de sintomas (máximo 5): '), read(Quantidade), nl,
+    write('Digite a quantidade de sintomas (mínimo 2): '), read(Quantidade), nl,
     obter_sintomas(Quantidade, [], Sintomas),
     doencaos_correspondente([Doenca, N|_], Sintomas, 4),
     write('As possíveis doenças são:'), nl,
